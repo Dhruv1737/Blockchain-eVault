@@ -65,12 +65,12 @@ export default function DocumentsRegistryPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="space-y-1">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-gold-500/10 text-gold-400 border border-gold-500/30">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono bg-amber-50 text-amber-800 border border-amber-200">
             <Files className="w-3.5 h-3.5" />
             <span>Immutable Registry Index</span>
           </div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">Registered Documents</h1>
-          <p className="text-sm text-slate-400">
+          <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Registered Documents</h1>
+          <p className="text-sm text-slate-500">
             Browse all legal records cryptographically fingerprinted on the chain seam.
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function DocumentsRegistryPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={fetchDocuments}
-            className="p-2.5 rounded-xl bg-navy-800 hover:bg-navy-700 text-slate-300 transition-colors border border-navy-700"
+            className="p-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-600 transition-colors border border-slate-200"
             title="Refresh registry"
           >
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
@@ -86,28 +86,28 @@ export default function DocumentsRegistryPage() {
 
           <Link
             href="/upload"
-            className="px-5 py-2.5 rounded-xl font-extrabold text-xs gold-gradient-btn text-navy-950 flex items-center gap-2 shadow-lg"
+            className="px-5 py-2.5 rounded-xl font-extrabold text-xs gold-gradient-btn text-white flex items-center gap-2"
           >
-            <FilePlus className="w-4 h-4 text-navy-950" />
+            <FilePlus className="w-4 h-4 text-white" />
             <span>Register New Document</span>
           </Link>
         </div>
       </div>
 
       {/* Search & Filter Control */}
-      <div className="glass-panel p-4 rounded-2xl border border-navy-700 flex items-center gap-3">
+      <div className="glass-panel p-4 rounded-2xl border border-slate-200 flex items-center gap-3">
         <Search className="w-5 h-5 text-slate-400" />
         <input
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Filter by filename, docId, or SHA-256 hash..."
-          className="bg-transparent text-sm text-white focus:outline-none w-full placeholder:text-slate-500 font-mono"
+          className="bg-transparent text-sm text-slate-900 focus:outline-none w-full placeholder:text-slate-400 font-mono"
         />
         {searchQuery && (
           <button
             onClick={() => setSearchQuery('')}
-            className="text-xs text-slate-400 hover:text-white px-2 py-1 bg-navy-800 rounded"
+            className="text-xs text-slate-500 hover:text-slate-900 px-2 py-1 bg-slate-100 rounded"
           >
             Clear
           </button>
@@ -116,20 +116,20 @@ export default function DocumentsRegistryPage() {
 
       {/* Loading state */}
       {loading && (
-        <div className="glass-panel rounded-3xl p-12 border border-navy-700 text-center space-y-4">
-          <Loader2 className="w-8 h-8 text-gold-400 animate-spin mx-auto" />
-          <p className="text-sm text-slate-400 font-mono">Reading chain seam registry records...</p>
+        <div className="glass-panel rounded-3xl p-12 border border-slate-200 text-center space-y-4">
+          <Loader2 className="w-8 h-8 text-amber-700 animate-spin mx-auto" />
+          <p className="text-sm text-slate-500 font-mono">Reading chain seam registry records...</p>
         </div>
       )}
 
       {/* Error state */}
       {!loading && error && (
-        <div className="p-6 rounded-2xl bg-tampered-900/40 border border-tampered-500/40 text-tampered-500 text-sm space-y-3">
+        <div className="p-6 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-sm space-y-3">
           <p className="font-bold">Failed to load registry documents</p>
-          <p className="text-xs text-slate-300">{error}</p>
+          <p className="text-xs text-slate-600">{error}</p>
           <button
             onClick={fetchDocuments}
-            className="px-4 py-2 rounded-lg bg-navy-800 text-white font-medium text-xs border border-navy-600"
+            className="px-4 py-2 rounded-lg bg-white text-slate-700 font-medium text-xs border border-slate-200"
           >
             Retry
           </button>
@@ -138,13 +138,13 @@ export default function DocumentsRegistryPage() {
 
       {/* Empty State (§6.3 Requirement) */}
       {!loading && !error && filteredDocs.length === 0 && (
-        <div className="glass-panel rounded-3xl p-12 border border-navy-700 text-center space-y-6">
-          <div className="w-16 h-16 rounded-2xl bg-navy-800 border border-navy-700 flex items-center justify-center mx-auto text-gold-400">
+        <div className="glass-panel rounded-3xl p-12 border border-slate-200 text-center space-y-6">
+          <div className="w-16 h-16 rounded-2xl bg-white border border-slate-200 flex items-center justify-center mx-auto text-amber-700">
             <Files className="w-8 h-8" />
           </div>
           <div className="max-w-md mx-auto space-y-2">
-            <h3 className="text-xl font-bold text-white">No documents registered yet</h3>
-            <p className="text-sm text-slate-400">
+            <h3 className="text-xl font-bold text-slate-900">No documents registered yet</h3>
+            <p className="text-sm text-slate-500">
               {searchQuery
                 ? `No documents matched your filter "${searchQuery}".`
                 : 'The cryptographic vault is currently empty. Register your first legal document to begin.'}
@@ -153,9 +153,9 @@ export default function DocumentsRegistryPage() {
 
           <Link
             href="/upload"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-extrabold text-sm gold-gradient-btn text-navy-950"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-extrabold text-sm gold-gradient-btn text-white"
           >
-            <FilePlus className="w-4 h-4 text-navy-950" />
+            <FilePlus className="w-4 h-4 text-white" />
             <span>Register First Document</span>
           </Link>
         </div>
@@ -163,10 +163,10 @@ export default function DocumentsRegistryPage() {
 
       {/* Registry Document Table / Cards */}
       {!loading && !error && filteredDocs.length > 0 && (
-        <div className="glass-panel rounded-3xl border border-navy-700 overflow-hidden shadow-2xl">
+        <div className="glass-panel rounded-3xl border border-slate-200 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-navy-900/90 text-slate-400 font-mono uppercase tracking-wider border-b border-navy-700">
+              <thead className="bg-slate-50 text-slate-500 font-mono uppercase tracking-wider border-b border-slate-200">
                 <tr>
                   <th className="px-6 py-4">Document / Filename</th>
                   <th className="px-6 py-4">Document ID (docId)</th>
@@ -175,21 +175,21 @@ export default function DocumentsRegistryPage() {
                   <th className="px-6 py-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-navy-800 text-slate-300">
+              <tbody className="divide-y divide-slate-100 text-slate-600">
                 {filteredDocs.map((doc) => (
-                  <tr key={doc.docId} className="hover:bg-navy-850/60 transition-colors group">
+                  <tr key={doc.docId} className="hover:bg-slate-50 transition-colors group">
                     {/* Filename & Size */}
-                    <td className="px-6 py-4 font-semibold text-white">
+                    <td className="px-6 py-4 font-semibold text-slate-900">
                       <div className="flex items-center gap-2.5">
-                        <div className="p-2 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400">
+                        <div className="p-2 rounded-lg bg-amber-50 border border-amber-200 text-amber-700">
                           <Lock className="w-4 h-4" />
                         </div>
                         <div>
-                          <div className="text-sm text-white group-hover:text-gold-300 transition-colors">
+                          <div className="text-sm text-slate-900 group-hover:text-amber-800 transition-colors">
                             {doc.filename}
                           </div>
                           {doc.fileSize > 0 && (
-                            <div className="text-[11px] text-slate-400 font-mono font-normal">
+                            <div className="text-[11px] text-slate-500 font-mono font-normal">
                               {(doc.fileSize / 1024).toFixed(1)} KB
                             </div>
                           )}
@@ -198,18 +198,18 @@ export default function DocumentsRegistryPage() {
                     </td>
 
                     {/* Copyable DocId */}
-                    <td className="px-6 py-4 font-mono text-slate-300">
+                    <td className="px-6 py-4 font-mono text-slate-600">
                       <div className="flex items-center gap-2">
                         <span className="truncate max-w-[140px]" title={doc.docId}>
                           {doc.docId}
                         </span>
                         <button
                           onClick={() => copyToClipboard(doc.docId, `docId-${doc.docId}`)}
-                          className="p-1 rounded bg-navy-800 hover:bg-navy-700 text-slate-400 hover:text-white transition-colors"
+                          className="p-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 transition-colors"
                           title="Copy docId"
                         >
                           {copiedId === `docId-${doc.docId}` ? (
-                            <Check className="w-3.5 h-3.5 text-emerald-400" />
+                            <Check className="w-3.5 h-3.5 text-emerald-700" />
                           ) : (
                             <Copy className="w-3.5 h-3.5" />
                           )}
@@ -218,18 +218,18 @@ export default function DocumentsRegistryPage() {
                     </td>
 
                     {/* Truncated SHA-256 Hash */}
-                    <td className="px-6 py-4 font-mono text-gold-400">
+                    <td className="px-6 py-4 font-mono text-amber-800">
                       <div className="flex items-center gap-2">
                         <span title={doc.hash}>
                           {doc.hash.slice(0, 10)}...{doc.hash.slice(-10)}
                         </span>
                         <button
                           onClick={() => copyToClipboard(doc.hash, `hash-${doc.docId}`)}
-                          className="p-1 rounded bg-navy-800 hover:bg-navy-700 text-slate-400 hover:text-white transition-colors"
+                          className="p-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-900 transition-colors"
                           title="Copy full SHA-256 hash"
                         >
                           {copiedId === `hash-${doc.docId}` ? (
-                            <Check className="w-3.5 h-3.5 text-emerald-400" />
+                            <Check className="w-3.5 h-3.5 text-emerald-700" />
                           ) : (
                             <Copy className="w-3.5 h-3.5" />
                           )}
@@ -238,9 +238,9 @@ export default function DocumentsRegistryPage() {
                     </td>
 
                     {/* Timestamp */}
-                    <td className="px-6 py-4 font-mono text-slate-400">
+                    <td className="px-6 py-4 font-mono text-slate-500">
                       <div className="flex items-center gap-1.5">
-                        <Clock className="w-3.5 h-3.5 text-slate-500" />
+                        <Clock className="w-3.5 h-3.5 text-slate-400" />
                         <span>{new Date(doc.registeredAt).toLocaleString()}</span>
                       </div>
                     </td>
@@ -249,7 +249,7 @@ export default function DocumentsRegistryPage() {
                     <td className="px-6 py-4 text-right">
                       <Link
                         href={`/verify?docId=${encodeURIComponent(doc.docId)}`}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-navy-800 hover:bg-gold-500 text-slate-200 hover:text-navy-950 font-bold text-xs transition-colors border border-navy-700"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-amber-700 text-slate-700 hover:text-white font-bold text-xs transition-colors border border-slate-200"
                       >
                         <FileCheck className="w-3.5 h-3.5" />
                         <span>Verify This File</span>
