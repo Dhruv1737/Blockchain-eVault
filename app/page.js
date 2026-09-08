@@ -46,9 +46,9 @@ export default async function HomePage() {
           </h1>
 
           <p className="text-lg text-slate-600 leading-relaxed font-normal">
-            eVault stores cryptographic SHA-256 fingerprints of legal documents. 
-            Instantly verify whether any agreement, land deed, or court record remains 
-            <span className="text-emerald-700 font-semibold"> Authentic</span> or has been 
+            eVault stores cryptographic SHA-256 fingerprints of legal documents.
+            Instantly verify whether any agreement, land deed, or court record remains
+            <span className="text-emerald-700 font-semibold"> Authentic</span> or has been
             <span className="text-red-700 font-semibold"> Tampered</span> — zero content exposed.
           </p>
 
@@ -126,7 +126,7 @@ export default async function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Step 1 */}
           <div className="glass-panel p-6 rounded-2xl border border-slate-200 hover:border-amber-300 transition-all group">
-            <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 font-mono font-bold text-lg mb-4 group-hover:scale-105 transition-transform">
+            <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 font-mono font-bold text-lg mb-4">
               01
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
@@ -140,7 +140,7 @@ export default async function HomePage() {
 
           {/* Step 2 */}
           <div className="glass-panel p-6 rounded-2xl border border-slate-200 hover:border-amber-300 transition-all group">
-            <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 font-mono font-bold text-lg mb-4 group-hover:scale-105 transition-transform">
+            <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 font-mono font-bold text-lg mb-4">
               02
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
@@ -154,7 +154,7 @@ export default async function HomePage() {
 
           {/* Step 3 */}
           <div className="glass-panel p-6 rounded-2xl border border-slate-200 hover:border-amber-300 transition-all group">
-            <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 font-mono font-bold text-lg mb-4 group-hover:scale-105 transition-transform">
+            <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-800 font-mono font-bold text-lg mb-4">
               03
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-2 flex items-center gap-2">
@@ -162,8 +162,8 @@ export default async function HomePage() {
               Side-by-Side Verification
             </h3>
             <p className="text-sm text-slate-500 leading-relaxed">
-              Re-upload any document later. eVault compares hashes side-by-side to declare 
-              <span className="text-emerald-700 font-semibold"> Authentic</span> or 
+              Re-upload any document later. eVault compares hashes side-by-side to declare
+              <span className="text-emerald-700 font-semibold"> Authentic</span> or
               <span className="text-red-700 font-semibold"> Tampered</span>.
             </p>
           </div>
@@ -179,9 +179,9 @@ export default async function HomePage() {
           <div className="space-y-2">
             <h3 className="text-xl font-extrabold text-slate-900">Judges Architecture Seam Notice</h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              In this MVP build, MongoDB stands in for the ultimate blockchain layer. 
-              <strong> Crucially, no UI component or API route calls MongoDB directly.</strong> 
-              All registry calls execute through <code className="px-1.5 py-0.5 rounded bg-slate-100 text-amber-800 font-mono text-xs">lib/chain/index.js</code>. 
+              In this MVP build, MongoDB stands in for the ultimate blockchain layer.
+              <strong> Crucially, no UI component or API route calls MongoDB directly.</strong>
+              All registry calls execute through <code className="px-1.5 py-0.5 rounded bg-slate-100 text-amber-800 font-mono text-xs">lib/chain/index.js</code>.
               When transitioning from prototype to Sepolia/Hyperledger in production, only <code className="px-1.5 py-0.5 rounded bg-slate-100 text-amber-800 font-mono text-xs">lib/chain/index.js</code> is modified.
             </p>
           </div>
